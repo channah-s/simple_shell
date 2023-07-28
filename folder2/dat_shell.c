@@ -11,8 +11,9 @@ int execute_command(char *args[], const char *shell_name, int command_count)
 {
 	pid_t pid = fork();
 
-	(UNUSED) shell_name;
-	(UNUSED) command_count;
+	UNUSED(shell_name);
+	UNUSED(command_count);
+
 	if (pid < 0)
 	{
 		fprintf(stderr, "Fork failed\n");
@@ -34,6 +35,7 @@ int execute_command(char *args[], const char *shell_name, int command_count)
  * @args: array of arguments for the command
  * @shell_name: the name of the shell (e.g., "sh")
  * @command_count: the count of commands entered since shell execution
+ * Return: exit status value
  */
 int search_n_exec_cmd(char *args[], const char *shell_name, int command_count)
 {
@@ -120,5 +122,5 @@ int main(void)
 	}
 
 	free(input);
-	exit (status);
+	exit(status);
 }

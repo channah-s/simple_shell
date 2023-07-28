@@ -9,6 +9,7 @@
  */
 int execute_command(char *args[], const char *shell_name, int command_count)
 {
+	int status;
 	pid_t pid = fork();
 
 	UNUSED(shell_name);
@@ -25,8 +26,15 @@ int execute_command(char *args[], const char *shell_name, int command_count)
 		exit(EXIT_FAILURE);
 	}
 	else
-		wait(NULL);
-	return (0);
+	{
+		wait(&status);
+		if (WIFEXITED(status))
+		{
+			return (WEXITSTATUS(status));
+		}
+	}
+
+	return (status);
 }
 
 
