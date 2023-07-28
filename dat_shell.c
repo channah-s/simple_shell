@@ -86,6 +86,28 @@ int search_n_exec_cmd(char *args[], const char *shell_name, int command_count)
 }
 
 /**
+ * handle_env - this  handles the built-in "env" command
+ * @shell_name: the name of the shell (e.g., "sh")
+ * @command_count: count of commands entered since shell execution
+ * Return: Always returns 0 (when there is success)
+ */
+int handle_env(const char *shell_name, int command_count)
+{
+	char **env_ptr = environ;
+
+	UNUSED(command_count);
+	UNUSED(shell_name);
+
+	while (*env_ptr != NULL)
+	{
+		printf("%s\n", *env_ptr);
+		env_ptr++;
+	}
+
+	return (0);
+}
+
+/**
  * main - entry point of the shell program
  * Return: 0 if successful
  */
@@ -102,16 +124,13 @@ int main(void)
 		command_count++;
 		if (isatty(STDIN_FILENO) == 1)
 			printf("$ ");
-
 		if (getline(&input, &n, stdin) == -1)
 		{
 			if (isatty(STDIN_FILENO) == 1)
 				printf("\n");
 			break;
 		}
-
 		input[strcspn(input, "\n")] = '\0';
-
 		if (strcmp(input, "exit") == 0)
 			break;
 		num_args = tokenize_input(input, args);
@@ -122,13 +141,16 @@ int main(void)
 			handle_cd(args, shell_name, command_count);
 			continue;
 		}
-
+		if (strcmp(args[0], "env") == 0)
+		{
+			status = handle_env(shell_name, command_count);
+			continue;
+		}
 		/*if (strchr(args[0], '/') == NULL) */
 		status = search_n_exec_cmd(args, shell_name, command_count);
 		/*else */
 		/*	execute_command(args, shell_name, command_count); */
 	}
-
 	free(input);
 	exit(status);
 }

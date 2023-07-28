@@ -14,6 +14,8 @@
 
 #define UNUSED(x) (void)(x)
 
+extern char **environ;
+
 char *get_shell_name();
 void handle_cd(char *args[], const char *shell_name, int command_count);
 int tokenize_input(char *input, char *args[]);
