@@ -35,6 +35,7 @@ int execute_command(char *args[], const char *shell_name, int command_count)
  * @args: array of arguments for the command
  * @shell_name: the name of the shell (e.g., "sh")
  * @command_count: the count of commands entered since shell execution
+ * Return: exit status value
  */
 int search_n_exec_cmd(char *args[], const char *shell_name, int command_count)
 {
@@ -121,5 +122,5 @@ int main(void)
 	}
 
 	free(input);
-	exit (status);
+	exit(status);
 }
