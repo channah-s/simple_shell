@@ -113,11 +113,12 @@ int handle_env(const char *shell_name, int command_count)
  * @shell_name: this is the name of the shell
  * @command_count: count of commands entered since shell execution
  * @status: stores the exit status of a function
+ * @input: stores the command inputted by users
  * Return: Always returns 0 (when there is success)
  */
 
 int exiT(char *args[], const char *shell_name, int command_count,
- int status, char *input)
+int status, char *input)
 {
 
 	if (args[1] == NULL)

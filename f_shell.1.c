@@ -58,11 +58,12 @@ char *get_shell_name()
  * @shell_name: name of shell executed
  * @command_count: count of commands entered
  * @status: variable storing last command exit status
+ * @input: stores the command inputted by users
  * Return: exit status for present command
  */
 
 int chK(char *args[], const char *shell_name, int command_count,
- int status, char *input)
+int status, char *input)
 {
 
 	if (strcmp(args[0], "exit") == 0)
