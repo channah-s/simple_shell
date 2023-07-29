@@ -19,8 +19,10 @@ extern char **environ;
 int execute_command(char *args[], const char *shell_name, int command_count);
 int search_n_exec_cmd(char *args[], const char *shell_name, int command_count);
 int handle_env(const char *shell_name, int command_count);
-int exiT(char *args[], const char *shell_name, int command_count, int status);
-int chK(char *args[], const char *shell_name, int command_count, int status);
+int exiT(char *args[], const char *shell_name, int command_count,
+ int status, char *input);
+int chK(char *args[], const char *shell_name, int command_count, int status,
+char *input);
 char *get_shell_name();
 void handle_cd(char *args[], const char *shell_name, int command_count);
 int tokenize_input(char *input, char *args[]);

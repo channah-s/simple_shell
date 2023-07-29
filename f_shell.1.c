@@ -61,11 +61,12 @@ char *get_shell_name()
  * Return: exit status for present command
  */
 
-int chK(char *args[], const char *shell_name, int command_count, int status)
+int chK(char *args[], const char *shell_name, int command_count,
+ int status, char *input)
 {
 
 	if (strcmp(args[0], "exit") == 0)
-		status = exiT(args, shell_name, command_count, status);
+		status = exiT(args, shell_name, command_count, status, input);
 	else if (strcmp(args[0], "env") == 0)
 		status = handle_env(shell_name, command_count);
 

@@ -116,15 +116,20 @@ int handle_env(const char *shell_name, int command_count)
  * Return: Always returns 0 (when there is success)
  */
 
-int exiT(char *args[], const char *shell_name, int command_count, int status)
+int exiT(char *args[], const char *shell_name, int command_count,
+ int status, char *input)
 {
 
 	if (args[1] == NULL)
+	{
+		free(input);
 		exit(status);
+	}
 
 	if (check_for_non_digit(args[1]) == 0)
 	{
 		status = atoi(args[1]);
+		free(input);
 		exit(status);
 	}
 	fprintf(stderr, "%s: %d: exit: illegal number: %s\n",
@@ -162,11 +167,11 @@ int main(void)
 		input[strcspn(input, "\n")] = '\0';
 
 		tokenize_input(input, args);
-		free(input);
 		if (args == NULL || args[0] == NULL)
 			continue;
 
-		status = chK(args, shell_name, command_count, status);
+		status = chK(args, shell_name, command_count, status,
+		input);
 		/*if (strchr(args[0], '/') == NULL) */
 		/*status = search_n_exec_cmd(args, shell_name, command_count);*/
 		/*else */
