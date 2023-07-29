@@ -51,3 +51,29 @@ char *get_shell_name()
 	shell_name = getenv("_");
 	return (shell_name);
 }
+
+/**
+ * chK - checks if first arg is an environ
+ * @args: 2D array containing tokenized arguments
+ * @shell_name: name of shell executed
+ * @command_count: count of commands entered
+ * @status: variable storing last command exit status
+ * Return: exit status for present command
+ */
+
+int chK(char *args[], const char *shell_name, int command_count, int status)
+{
+
+	if (strcmp(args[0], "exit") == 0)
+		status = exiT(args, shell_name, command_count, status);
+	else if (strcmp(args[0], "env") == 0)
+		status = handle_env(shell_name, command_count);
+
+	else if (strcmp(args[0], "cd") == 0)
+		handle_cd(args, shell_name, command_count);
+
+	else
+		status = search_n_exec_cmd(args, shell_name, command_count);
+
+	return (status);
+}

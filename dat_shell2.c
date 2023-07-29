@@ -108,6 +108,33 @@ int handle_env(const char *shell_name, int command_count)
 }
 
 /**
+ * exiT - function handles exit as a command on this shell
+ * @args: array of arguments of tokenized command inputted
+ * @shell_name: this is the name of the shell
+ * @command_count: count of commands entered since shell execution
+ * @status: stores the exit status of a function
+ * Return: Always returns 0 (when there is success)
+ */
+
+int exiT(char *args[], const char *shell_name, int command_count, int status)
+{
+
+	if (args[1] == NULL)
+		exit(status);
+
+	if (check_for_non_digit(args[1]) == 0)
+	{
+		status = atoi(args[1]);
+		exit(status);
+	}
+	fprintf(stderr, "%s: %d: exit: illegal number: %s\n",
+			shell_name, command_count, args[1]);
+	status = 2;
+
+	return (status);
+}
+
+/**
  * main - entry point of the shell program
  * Return: 0 if successful
  */
@@ -116,8 +143,10 @@ int main(void)
 {
 	char *input = NULL, *args[MAX_LENGTH];
 	size_t n = 0;
-	int command_count = 0, num_args, status = 0;
-	const char *shell_name = get_shell_name();
+	int command_count = 0, status = 0;
+	const char *shell_name;
+
+	shell_name = get_shell_name();
 
 	while (1)
 	{
@@ -131,23 +160,12 @@ int main(void)
 			break;
 		}
 		input[strcspn(input, "\n")] = '\0';
-		if (strcmp(input, "exit") == 0)
-			break;
-		num_args = tokenize_input(input, args);
-		if (num_args == 0)
-			continue;
-		if (strcmp(args[0], "cd") == 0)
-		{
-			handle_cd(args, shell_name, command_count);
-			continue;
-		}
-		if (strcmp(args[0], "env") == 0)
-		{
-			status = handle_env(shell_name, command_count);
-			continue;
-		}
+
+		tokenize_input(input, args);
+
+		status = chK(args, shell_name, command_count, status);
 		/*if (strchr(args[0], '/') == NULL) */
-		status = search_n_exec_cmd(args, shell_name, command_count);
+		/*status = search_n_exec_cmd(args, shell_name, command_count);*/
 		/*else */
 		/*	execute_command(args, shell_name, command_count); */
 	}
