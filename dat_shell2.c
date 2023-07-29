@@ -162,7 +162,7 @@ int main(void)
 		input[strcspn(input, "\n")] = '\0';
 
 		tokenize_input(input, args);
-
+		free(input);
 		if (args == NULL || args[0] == NULL)
 			continue;
 
