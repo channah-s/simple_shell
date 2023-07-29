@@ -1,0 +1,73 @@
+Compile program
+
+Correct output - case: Exit with the status 1000
+
+Score: 1 out of 1 points
+
+Files: checker.bash, exit_1000.bash
+
+Correct output - case: Exit with the number 98 as parameter
+
+Score: 1 out of 1 points
+
+Files: checker.bash, exit_with_status.bash
+
+Correct output - case: Exit with a negative number
+
+Score: 1 out of 1 points
+
+Files: checker.bash, exit_neg_number.bash
+
+Correct output - case: Execute a command that fails, and exit without parameter
+
+Score: 1 out of 1 points
+
+Files: checker.bash, exit_no_arg_1.bash
+
+Correct output - case: Exit without parameter
+
+Score: 1 out of 1 points
+
+Files: checker.bash, exit_no_arg.bash
+
+Correct output - case: Exit with a string as parameter
+
+Score: 1 out of 1 points
+
+Files: checker.bash, exit_string.bashCompile program
+
+Correct output - case: Exit with the status 1000
+
+Score: 1 out of 1 points
+
+Files: checker.bash, exit_1000.bash
+
+Correct output - case: Exit with the number 98 as parameter
+
+Score: 1 out of 1 points
+
+Files: checker.bash, exit_with_status.bash
+
+Correct output - case: Exit with a negative number
+
+Score: 1 out of 1 points
+
+Files: checker.bash, exit_neg_number.bash
+
+Correct output - case: Execute a command that fails, and exit without parameter
+
+Score: 1 out of 1 points
+
+Files: checker.bash, exit_no_arg_1.bash
+
+Correct output - case: Exit without parameter
+
+Score: 1 out of 1 points
+
+Files: checker.bash, exit_no_arg.bash
+
+Correct output - case: Exit with a string as parameter
+
+Score: 1 out of 1 points
+
+Files: checker.bash, exit_string.bash

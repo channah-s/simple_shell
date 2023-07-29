@@ -163,6 +163,9 @@ int main(void)
 
 		tokenize_input(input, args);
 
+		if (args == NULL || args[0] == NULL)
+			continue;
+
 		status = chK(args, shell_name, command_count, status);
 		/*if (strchr(args[0], '/') == NULL) */
 		/*status = search_n_exec_cmd(args, shell_name, command_count);*/
